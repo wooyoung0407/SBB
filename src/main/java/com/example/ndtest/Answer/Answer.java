@@ -1,11 +1,13 @@
 package com.example.ndtest.Answer;
 
 import com.example.ndtest.Question.Question;
+import com.example.ndtest.User.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
-
+import java.util.Set;
+import jakarta.persistence.ManyToMany;
 import java.time.LocalDateTime;
 
 @Getter
@@ -22,4 +24,13 @@ public class Answer {
     private LocalDateTime createDate;
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
+
+    private LocalDateTime modifyDate;
+
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }

@@ -1,9 +1,12 @@
 package com.example.ndtest.Question;
 
 import com.example.ndtest.Answer.Answer;
+import com.example.ndtest.User.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.Set;
+import jakarta.persistence.ManyToMany;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,4 +30,11 @@ public class Question {
 
     @OneToMany(mappedBy = "question",cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+    @ManyToOne
+    private SiteUser author;
+
+    private LocalDateTime modifyDate;
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }
